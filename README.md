@@ -1,9 +1,10 @@
 # 裂缝检测 U-Net 模型 (Crack Detection U-Net Model)
 
-<div align="center">
+
 [中文文档](#中文文档) | [English Documentation](#english-documentation)
-</div>
-## Results
+
+# Results
+
 
 ![2_prediction](results/2_prediction.png)
 
