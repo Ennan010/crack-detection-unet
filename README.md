@@ -5,9 +5,9 @@
 </div>
 ## Results
 
-![2_prediction](results\2_prediction.png)
+![2_prediction](results/2_prediction.png)
 
-![5_prediction]results\5_prediction.png)
+![5_prediction](results/5_prediction.png)
 
 
 
