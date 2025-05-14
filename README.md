@@ -5,6 +5,8 @@
 
 视频演示：【经典的 U-Net 模型实现裂缝检测，在 PyTorch 中轻松复现！-哔哩哔哩】 https://b23.tv/V4dSAJe
 
+best_model.pth download：https://pan.baidu.com/s/13PIct-k2FAQyei8ZlNnq-g?pwd=o675
+
 # Results
 
 
