@@ -10,8 +10,6 @@ import torch.nn as nn
 数据处理模块: 实现裂缝数据集的加载、预处理和增强
 以及注意力门控模块的定义
 
-Data processing module: Implements loading, preprocessing and augmentation of crack dataset
-and the definition of attention gate module
 """
 
 class CrackDataset(Dataset):
@@ -23,12 +21,6 @@ class CrackDataset(Dataset):
     2. 应用数据增强以提高模型泛化能力
     3. 提供统一的数据格式和预处理
     
-    Crack Dataset Loading Class
-    
-    Functions:
-    1. Load images and corresponding masks
-    2. Apply data augmentation to improve model generalization
-    3. Provide unified data format and preprocessing
     
     参数 | Parameters:
         image_dir: 原始图像所在目录 | Directory containing original images
@@ -83,12 +75,6 @@ class CrackDataset(Dataset):
         - 只对图像进行亮度和对比度调整
         - 处理异常情况，确保训练过程不中断
         
-        Get a single sample (image and corresponding mask), and apply data augmentation
-        
-        Note:
-        - Images and masks must undergo the same geometric transformations to maintain alignment
-        - Only apply brightness and contrast adjustments to images
-        - Handle exceptional cases to ensure training process is not interrupted
         """
         try:
             # 加载图像 | Load image
@@ -159,14 +145,6 @@ class AttentionGate(nn.Module):
     2. 计算特征间的相关性，生成注意力权重
     3. 用权重调整跳跃连接特征，突出重要区域
     
-    Attention Gate Module
-    
-    This is the core improvement part of this project, enabling the network to focus on crack areas and suppress background noise.
-    Working principle:
-    1. Process features from upsampling path (g) and skip connection (x) separately
-    2. Calculate correlation between features to generate attention weights
-    3. Adjust skip connection features with weights to highlight important areas
-    
     参数 | Parameters:
         F_g: 上采样特征的通道数 | Number of channels for upsampling features
         F_l: 跳跃连接特征的通道数 | Number of channels for skip connection features
@@ -204,14 +182,6 @@ class AttentionGate(nn.Module):
         返回:
             x * psi: 加权后的跳跃连接特征
             
-        Forward propagation to calculate attention weights and apply to features
-        
-        Parameters:
-            g: Features obtained from upsampling (from decoder)
-            x: Skip connection features (from encoder)
-            
-        Returns:
-            x * psi: Weighted skip connection features
         """
         # 降维处理 | Dimensionality reduction processing
         g1 = self.W_g(g)      # 处理上采样特征 | Process upsampling features
@@ -226,4 +196,3 @@ class AttentionGate(nn.Module):
         # 注意力加权：相当于软掩码，突出重要区域 | Attention weighting: equivalent to soft masking, highlighting important areas
         return x * psi        # 将注意力应用到原始特征 | Apply attention to original features
 
-# 在UNet类中添加注意力门并修改forward方法
